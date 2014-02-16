@@ -12,5 +12,8 @@ ant
 # Limpa o diretorio de saida no HFS
 $HADOOP/bin/hadoop dfs -rmr $HFS_OUTPUT_DIR
 
-# Executa o experimento
-$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.FeatureExtractor $HFS_INPUT_DIR $HFS_OUTPUT_DIR
+# Executa o experimento 01
+$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp01.FeatureExtractor $HFS_INPUT_DIR/exp01 $HFS_OUTPUT_DIR/exp01
+
+# Executa o experimento 02
+$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp02.SplitTransformer $HFS_INPUT_DIR/exp02 $HFS_OUTPUT_DIR/exp02
