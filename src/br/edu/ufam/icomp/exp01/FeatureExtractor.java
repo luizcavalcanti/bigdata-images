@@ -1,4 +1,4 @@
-package br.edu.ufam.icomp;
+package br.edu.ufam.icomp.exp01;
 
 import java.io.IOException;
 
@@ -13,9 +13,6 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
-
-import br.edu.ufam.icomp.exp01.Exp01Mapper;
-import br.edu.ufam.icomp.exp01.Exp01Reducer;
 
 public class FeatureExtractor {
 
@@ -52,9 +49,9 @@ class FeatureExtractorRunner extends Configured implements Tool {
         FileInputFormat.addInputPath(configuracao, new Path(entrada));
         FileOutputFormat.setOutputPath(configuracao, new Path(saida));
 
-        Job job = new Job(configuracao, "featureExtraction");
-        job.setMapperClass(Exp01Mapper.class);
-        job.setReducerClass(Exp01Reducer.class);
+        Job job = new Job(configuracao, "featureExtractor");
+        job.setMapperClass(FeatureExtractorMapper.class);
+        job.setReducerClass(FeatureExtractorReducer.class);
         job.setJarByClass(FeatureExtractor.class);
         job.setInputFormatClass(SequenceFileInputFormat.class);
 

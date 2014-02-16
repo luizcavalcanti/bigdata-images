@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import br.edu.ufam.icomp.image.ImageUtils;
 
-public class Exp01Mapper extends Mapper<Text, BytesWritable, Text, Text> {
+public class FeatureExtractorMapper extends Mapper<Text, BytesWritable, Text, Text> {
 
     @Override
     protected void map(Text key, BytesWritable value, Context context) throws IOException, InterruptedException {
