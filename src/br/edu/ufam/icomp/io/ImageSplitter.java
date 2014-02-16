@@ -47,13 +47,13 @@ public class ImageSplitter {
             for (Path p : files) {
                 in = fs.open(p);
                 BufferedImage originalImage = ImageIO.read(in);
-                BufferedImage[] chunks = ImageUtils.splitImage(originalImage);
-                int index = 0;
-                for (BufferedImage chunk : chunks) {
-                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    ImageIO.write(chunk, "jpg", baos);
-                    writer.append(new Text(p.getName() + "_" + index), new BytesWritable(baos.toByteArray()));
-                    index++;
+                BufferedImage[][] chunks = ImageUtils.splitImage(originalImage, 2, 2);
+                for (int i = 0; i < chunks.length; i++) {
+                    for (int j = 0; j < chunks[i].length; j++) {
+                        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                        ImageIO.write(chunks[i][j], "jpg", baos);
+                        writer.append(new Text(p.getName() + "_" + i + "_" + j), new BytesWritable(baos.toByteArray()));
+                    }
                 }
                 in.close();
             }

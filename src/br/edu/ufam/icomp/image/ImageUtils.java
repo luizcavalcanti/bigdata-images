@@ -38,21 +38,17 @@ public class ImageUtils {
     }
 
     // TODO configure split number
-    public static BufferedImage[] splitImage(BufferedImage img) {
-        int chunkHeight = img.getHeight() / 2;
-        int chunkWidth = img.getWidth() / 2;
-        int verticalPieces = img.getHeight() / chunkHeight;
-        int horizontalPieces = img.getWidth() / chunkWidth;
-        BufferedImage result[] = new BufferedImage[4];
-        int piece = 0;
-        for (int x = 0; x < verticalPieces; x++) {
-            for (int y = 0; y < horizontalPieces; y++) {
+    public static BufferedImage[][] splitImage(BufferedImage img, int rows, int columns) {
+        int chunkHeight = img.getHeight() / rows;
+        int chunkWidth = img.getWidth() / columns;
+        BufferedImage result[][] = new BufferedImage[rows][columns];
+        for (int x = 0; x < rows; x++) {
+            for (int y = 0; y < columns; y++) {
                 BufferedImage chunk = new BufferedImage(chunkWidth, chunkHeight, img.getType());
                 Graphics2D g = chunk.createGraphics();
                 g.drawImage(img, 0, 0, chunkWidth, chunkHeight, chunkWidth * y, chunkHeight * x, chunkWidth * y
                         + chunkWidth, chunkHeight * x + chunkHeight, null);
-                result[piece] = chunk;
-                piece++;
+                result[x][y] = chunk;
             }
         }
         return result;
