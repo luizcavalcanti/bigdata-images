@@ -50,7 +50,7 @@ class SplitTransformerRunner extends Configured implements Tool {
         FileInputFormat.addInputPath(configuracao, new Path(entrada));
         FileOutputFormat.setOutputPath(configuracao, new Path(saida));
 
-        Job job = new Job(configuracao, "featureExtractor");
+        Job job = new Job(configuracao, "splitTransformer");
         job.setMapperClass(SplitTransformerMapper.class);
         job.setReducerClass(SplitTransformerReducer.class);
         job.setJarByClass(SplitTransformer.class);
