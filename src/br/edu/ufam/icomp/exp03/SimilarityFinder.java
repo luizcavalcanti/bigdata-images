@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
@@ -57,7 +56,7 @@ class SimilarityFinderRunner extends Configured implements Tool {
         job.setInputFormatClass(SequenceFileInputFormat.class);
 
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(BytesWritable.class);
+        job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);

@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 import br.edu.ufam.icomp.image.GQViewComparison;
 
-public class SimilarityFinderMapper extends Mapper<Text, BytesWritable, Text, BytesWritable> {
+public class SimilarityFinderMapper extends Mapper<Text, BytesWritable, Text, Text> {
 
     private static final String PIVOT_IMG_PATH = "/br/edu/ufam/icomp/exp03/pivotImage.jpg";
     private int[][][] pivotImageSignature;
@@ -32,7 +32,7 @@ public class SimilarityFinderMapper extends Mapper<Text, BytesWritable, Text, By
         BufferedImage image = ImageIO.read(new ByteArrayInputStream(rawImage));
         double similarity = getDistanceFromPivotImage(image);
         DecimalFormat df = new DecimalFormat("0.000");
-        context.write(new Text(df.format(similarity)), value);
+        context.write(new Text(df.format(similarity)), key);
     }
 
     private double getDistanceFromPivotImage(BufferedImage image) {
