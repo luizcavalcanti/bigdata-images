@@ -13,10 +13,10 @@ ant
 $HADOOP/bin/hadoop dfs -rmr $HFS_OUTPUT_DIR
 
 # Executa o experimento 01
-#$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp01.FeatureExtractor $HFS_INPUT_DIR/exp01 $HFS_OUTPUT_DIR/exp01
+$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp01.FeatureExtractor $HFS_INPUT_DIR/exp01 $HFS_OUTPUT_DIR/exp01
 
 # Executa o experimento 02
-#$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp02.SplitTransformer $HFS_INPUT_DIR/exp02 $HFS_OUTPUT_DIR/exp02
+$HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp02.SplitTransformer $HFS_INPUT_DIR/exp02 $HFS_OUTPUT_DIR/exp02
 
 # Executa o experimento 03
 $HADOOP/bin/hadoop jar dist/bigdata-images.jar br.edu.ufam.icomp.exp03.SimilarityFinder $HFS_INPUT_DIR/exp01 $HFS_OUTPUT_DIR/exp03
