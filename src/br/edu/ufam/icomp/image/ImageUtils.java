@@ -30,7 +30,7 @@ public class ImageUtils {
             for (int x = 0; x < bitmap.getWidth(); x++) {
                 Color c = new Color(bitmap.getRGB(x, y));
                 int grey = (c.getRed() + c.getBlue() + c.getGreen()) / 3;
-                int index = grey % bucketCount;
+                int index = grey / bucketCount;
                 histogram[index]++;
             }
         }
