@@ -25,12 +25,12 @@ public class ImageUtils {
     }
 
     public static int[] generateBWHistogram(BufferedImage bitmap, int bucketCount) {
-        int[] histogram = new int[bucketCount];
+        int[] histogram = new int[256 / bucketCount];
         for (int y = 0; y < bitmap.getHeight(); y++) {
             for (int x = 0; x < bitmap.getWidth(); x++) {
                 Color c = new Color(bitmap.getRGB(x, y));
                 int grey = (c.getRed() + c.getBlue() + c.getGreen()) / 3;
-                int index = grey % bucketCount;
+                int index = grey / bucketCount;
                 histogram[index]++;
             }
         }
